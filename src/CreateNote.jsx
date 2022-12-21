@@ -3,6 +3,8 @@ import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 
 const CreateNote = (props) => {
+  const [expand, setExpand] = useState(false);
+
   const [note, setNote] = useState({
     title: "",
     content: "",
@@ -27,17 +29,28 @@ const CreateNote = (props) => {
     setNote({ title: "", content: "" });
   };
 
+  const expandIt = () => {
+    setExpand(true);
+  };
+  const minimizeIt = () => {
+    setExpand(false);
+  };
+
   return (
     <div className="main_note">
       <form>
-        <input
-          name="title"
-          value={note.title}
-          onChange={InputEvent}
-          type="text"
-          placeholder="Title"
-          autoComplete="off"
-        />
+        {expand ? (
+          <input
+            name="title"
+            value={note.title}
+            onChange={InputEvent}
+            type="text"
+            placeholder="Title"
+            autoComplete="off"
+            onDoubleClick={minimizeIt}
+          />
+        ) : null}
+
         <textarea
           name="content"
           value={note.content}
@@ -45,10 +58,15 @@ const CreateNote = (props) => {
           cols="30"
           rows="2"
           placeholder="Write a note..."
+          onClick={expandIt}
+          onDoubleClick={minimizeIt}
         ></textarea>
-        <Button onClick={addEvent}>
-          <AddIcon className="plus_sign" />
-        </Button>
+
+        {expand ? (
+          <Button onClick={addEvent}>
+            <AddIcon className="plus_sign" />
+          </Button>
+        ) : null}
       </form>
     </div>
   );
