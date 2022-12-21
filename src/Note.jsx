@@ -1,13 +1,12 @@
 import React from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
-
-const Note = () => {
+const Note = (props) => {
   return (
     <>
       <div className="note">
-        <h1> tittle </h1>
+        <h1> {props.title} </h1>
         <br />
-        <p>hello world</p>
+        <p>{props.content}</p>
         <button className="btn">
           <DeleteIcon className="deleteIcon" />
         </button>
