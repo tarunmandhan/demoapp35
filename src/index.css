@@ -157,6 +157,10 @@ footer {
   width: 100%;
   position: absolute;
   bottom: 0;
-  text-align: center;
-  background-color: grey;
+  background-color: rgb(172, 162, 162);
+  width: 100%;
+  line-height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items:baseline ;
 }
